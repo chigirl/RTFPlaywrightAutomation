@@ -1,5 +1,7 @@
 # RTF Playwright Automation
 
+![Test Results](testResults.png)
+
 ## Objective 
 Develop an automated test case to create specified student records on the EDU platform and verify their creation. The subsequent task involves marking a specific student record as inactive or deleted.
 
