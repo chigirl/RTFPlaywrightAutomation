@@ -21,7 +21,8 @@ public class ManageStudentTests : PageTest
         Config = new ConfigurationBuilder()
         .AddUserSecrets<ManageStudentTests>()
         .Build();
-        var randomStudent = new Random(900).Next();
+        var randomNum = new Random();
+        var randTestStudent = randomNum.Next(100, 500);
 
         var AuthUser = new User()
         {
@@ -36,17 +37,17 @@ public class ManageStudentTests : PageTest
         //Create Test Student
         MyNewStudent = new Student()
         {
-            StudentId = "123850913" + randomStudent,
+            StudentId = "541" + randTestStudent,
             FirstName = "ATesty",
             LastName = "Jones",
-            Email = $"tj{randomStudent}@school.edu",
+            Email = $"tj{randTestStudent}@school.edu",
             AssignBuilding = "Sub Account 1",
             Gender = "Male",
             Ethnicity = "Black or African American",
             Birthday = "03/10/2019",
             Grade = "Grade 1",
             Education = "Special Education",
-            Username = $"testyjones{randomStudent}",
+            Username = $"testyjones{randTestStudent}",
             Password = "FirstGrade1"
         };
 
@@ -54,7 +55,6 @@ public class ManageStudentTests : PageTest
     [Test]
     public async Task TestAddStudent()
     {
-        //Navigate to Add Student Page 
         await Page.GetByRole(AriaRole.Link, new() { Name = "Setup" }).ClickAsync();
         await Page.GetByLabel("Manage Students").ClickAsync();
         await Expect(Page.GetByText("Manage All Students")).ToBeVisibleAsync();
